@@ -104,10 +104,8 @@
 
             if (ToastNotificationManagerCompat.WasCurrentProcessToastActivated())
             {
-                while (true)
-                {
-                    Thread.Sleep(10);
-                }
+                ProgressWindow progressWindow = new ProgressWindow();
+                progressWindow.ShowDialog();
             }
             else
             {

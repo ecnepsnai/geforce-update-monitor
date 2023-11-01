@@ -244,7 +244,31 @@
             var utf8Reader = new Utf8JsonReader(bodyTask.Result);
             DriverResponse response = JsonSerializer.Deserialize<DriverResponse>(ref utf8Reader);
 
-            return response.IDS[0].DownloadInfo;
+            int largestVersion = 0;
+            int versionIndex = -1;
+            for (int i = 0; i < response.IDS.Count(); i++)
+            {
+                DriverID driver = response.IDS[i];
+                try
+                {
+                    int version = int.Parse(driver.DownloadInfo.Version.Replace(".", ""));
+                    if (version > largestVersion)
+                    {
+                        largestVersion = version;
+                        versionIndex = i;
+                    }
+                }
+                catch
+                {
+                    continue;
+                }
+            }
+            if (versionIndex == -1)
+            {
+                throw new Exception("No suitable driver versions found");
+            }
+
+            return response.IDS[versionIndex].DownloadInfo;
         }
 
         static void DownloadAndExtract(DriverDownloadInfo driverInfo)

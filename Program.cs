@@ -22,6 +22,14 @@
                 return "skip_" + Version.Replace(@"/", "").Replace(".", "");
             }
         }
+
+        public bool IsNewerThan(string version)
+        {
+            int mine = int.Parse(this.Version.Replace(".", ""));
+            int theirs = int.Parse(this.Version.Replace(".", ""));
+
+            return mine > theirs;
+        }
     }
 
     public class DriverID
@@ -162,7 +170,7 @@
                 return;
             }
 
-            if (currentDriverVersion != latestDriver.Version)
+            if (latestDriver.IsNewerThan(currentDriverVersion))
             {
                 new ToastContentBuilder()
                     .AddArgument("action", "download")

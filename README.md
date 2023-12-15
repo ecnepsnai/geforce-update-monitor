@@ -9,6 +9,7 @@ A Windows application to monitor for Geforce Driver Updates without the need for
 > [!NOTE]  
 > The setup experience is currently manual. Automatic setup will come at a later date.
 
+1. Download & Install 7zip
 1. Download the latest release and place it somewhere permanent, such as AppData
 1. Create `AppData\Roaming\GeforceUpdateMonitor\config.txt` with the contents:
    ```

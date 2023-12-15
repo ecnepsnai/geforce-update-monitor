@@ -294,7 +294,7 @@
             }
 
             Process extract = new Process();
-            extract.StartInfo.FileName = @"C:\Program Files\7-Zip\7z.exe";
+            extract.StartInfo.FileName = Settings.ZipPath;
             extract.StartInfo.ArgumentList.Add("x");
             extract.StartInfo.ArgumentList.Add($"-o{Path.Combine(tempDirectory, "install")}");
             extract.StartInfo.ArgumentList.Add(Path.Combine(tempDirectory, "setup.exe"));

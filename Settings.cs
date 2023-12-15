@@ -11,6 +11,7 @@
         public static string FamilyID = "904"; // RTX 2080 Super
         public static string OSID = "135"; // Windows 11
         public static string LanguageCode = "1033"; // en-US
+        public static string ZipPath = @"C:\Program Files\7-Zip\7z.exe";
 
         public static void Load()
         {
@@ -50,6 +51,9 @@
                         break;
                     case "language_code":
                         LanguageCode = value;
+                        break;
+                    case "7zip_path":
+                        ZipPath = value;
                         break;
                     default:
                         logger.Error($"Unknown settings key {key}");
